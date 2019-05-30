@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startSearch(view: View?) {
-        val intent = Intent(this@MainActivity, TrackList::class.java)
+        val intent = Intent(this@MainActivity, FileSystem::class.java)
         startActivity(intent)
     }
 /*
@@ -45,4 +45,8 @@ class MainActivity : AppCompatActivity() {
         //player = null
     }
     */
+
+
 }
+
+
