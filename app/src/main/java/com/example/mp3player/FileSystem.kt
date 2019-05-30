@@ -17,11 +17,11 @@ class FileSystem : AppCompatActivity() {
         setContentView(R.layout.activity_file_system)
 
         val arguments = intent.extras
-        val path = arguments!!.get("path").toString()
+        val path = arguments!!.get("path")!!.toString()
 
         val listView: ListView = findViewById(R.id.listView)
 
-        var s: Array<String> = arrayOf(path)
+        var s: Array<String> = emptyArray()
 
         File(path).listFiles().forEach { s += it.name }
 
@@ -32,15 +32,22 @@ class FileSystem : AppCompatActivity() {
         listView.onItemClickListener =
             AdapterView.OnItemClickListener { _, itemClicked, _, _ ->
                 val ss: TextView = itemClicked as TextView
+                /*
                 if (ss.text == "*.mp3"){
                     val intent = Intent(this@FileSystem, TrackList::class.java)
-                    intent.putExtra("path", path + "/" + ss.text)
+                    intent.putExtra("audio", path + "/" + ss.text)
+                    intent.putExtra("path", path)
                     startActivity(intent)
                 } else {
                     val intent = Intent(this@FileSystem, FileSystem::class.java)
                     intent.putExtra("path", path + "/" + ss.text)
                     startActivity(intent)
                 }
+                */
+                val intent = Intent(this@FileSystem, TrackList::class.java)
+                intent.putExtra("audio", path + "/" + ss.text)
+                intent.putExtra("path", path + "/" + ss.text)
+                startActivity(intent)
             }
     }
 }

@@ -49,6 +49,14 @@
                     style="@style/RoundedCornerButton"
                     android:background="@drawable/button_style" />
         </RelativeLayout>
+
+        <fragment
+                android:id="@+id/musicFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:name="com.example.mp3player.MusicFragment">
+        </fragment>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

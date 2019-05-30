@@ -16,7 +16,8 @@ class TrackList : AppCompatActivity() {
         setContentView(R.layout.activity_track_list)
 
         val arguments = intent.extras
-        val path = arguments!!.get("path")
+        val path = arguments!!.get("path")!!.toString()
+        val audio = arguments.get("audio")!!.toString()
 
         /*       player = ExoPlayerFactory.newSimpleInstance(this)
                playerView = findViewById(R.id.playerView)
@@ -40,7 +41,8 @@ class TrackList : AppCompatActivity() {
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
         return when (MotionEventCompat.getActionMasked(event)) {
-            MotionEvent.ACTION_DOWN -> {
+            MotionEvent.ACTION_MOVE -> {
+                onBackPressed()
                 true
             }
             else -> super.onTouchEvent(event)

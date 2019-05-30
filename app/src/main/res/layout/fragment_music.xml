@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              tools:context=".MusicFragment"
+              android:id="@+id/musicFragment"
+              android:orientation="vertical">
+
+    <ImageButton
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_mini_player_next_28"
+    />
+
+    <ImageButton
+            android:id="@+id/pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/next"
+            android:src="@drawable/ic_pause_28"
+    />
+
+    <ImageView
+            android:id="@+id/im"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/cf900cc30c8c5bd55a937b58d3de85676c1151c"
+    />
+
+    <TextView
+            android:id="@+id/textBox"
+            android:hint="Нечего играть"
+            android:layout_toLeftOf="@+id/pause"
+            android:layout_toRightOf="@+id/im"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+</RelativeLayout>

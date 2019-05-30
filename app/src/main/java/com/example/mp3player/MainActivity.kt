@@ -11,7 +11,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 
-
 class MainActivity : AppCompatActivity() {
 
     var MY_PERMISSIONS_REQUEST_READ_STORAGE: Int = 0
@@ -20,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
     }
 
     fun startSearch(view: View?) {
@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this@MainActivity, FileSystem::class.java)
                     intent.putExtra("path", path)
                     startActivity(intent)
-                } else {
                 }
                 return
             }
