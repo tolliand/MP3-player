@@ -6,11 +6,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".FileSystem">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent">
     <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+    >
 
     </ListView>
+        <Button
+                android:id="@+id/choose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="Я выбираю тебя!"
+                android:onClick="startService"
+                tools:ignore="MissingConstraints"/>
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

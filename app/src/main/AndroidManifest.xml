@@ -14,8 +14,7 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".FileSystem"
-                android:noHistory="true"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+                android:noHistory="true">
         </activity>
         <activity
                 android:name=".TrackList"
@@ -30,6 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <service android:name=".AudioPLayerService"/>
     </application>
 
 </manifest>
