@@ -1,50 +1,59 @@
 package com.example.mp3player
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+
+
 
 class MainActivity : AppCompatActivity() {
-/*
-    private lateinit var playerView: PlayerView
-    private lateinit var player: SimpleExoPlayer
-*/
+
+    var MY_PERMISSIONS_REQUEST_READ_STORAGE: Int = 0
+    private var path: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
- /*       player = ExoPlayerFactory.newSimpleInstance(this)
-        playerView = findViewById(R.id.playerView)
-        playerView.player = player
-
-        // Produces DataSource instances through which media data is loaded.
-        val dataSourceFactory = DefaultDataSourceFactory(
-            this,
-            getUserAgent(this, "MP3 player")
-        )
-
-       val audioSource =*/
-// This is the MediaSource representing the media to be played.
-        /*val audioSource = ProgressiveMediaSource.Factory(dataSourceFactory)
-            .createMediaSource(mp4VideoUri)
-        player.prepare(audioSource)*/
     }
 
     fun startSearch(view: View?) {
-        val intent = Intent(this@MainActivity, FileSystem::class.java)
-        startActivity(intent)
-    }
-/*
-    override fun onStop() {
-        super.onStop()
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    MY_PERMISSIONS_REQUEST_READ_STORAGE)
+        } else {
+            path = Environment.getExternalStorageDirectory().absolutePath
+            val intent = Intent(this@MainActivity, FileSystem::class.java)
+            intent.putExtra("path", path)
+            startActivity(intent)
+        }
 
-        playerView.player = null
-        player.release()
-        //player = null
     }
-    */
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            MY_PERMISSIONS_REQUEST_READ_STORAGE -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    path = Environment.getExternalStorageDirectory().absolutePath
+                    val intent = Intent(this@MainActivity, FileSystem::class.java)
+                    intent.putExtra("path", path)
+                    startActivity(intent)
+                } else {
+                }
+                return
+            }
+            else -> {
+            }
+        }
+    }
 
 
 }
